@@ -8,7 +8,8 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
     }
-
+    
+    // TODO: Replace with logic for button to get to questions
     //private void OnCounterClicked(object sender, EventArgs e)
     //{
     //    count++;
