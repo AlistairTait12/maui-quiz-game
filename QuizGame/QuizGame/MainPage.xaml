@@ -8,6 +8,7 @@
             <Label Text="QUIZ&#10;GAME"
                    FontSize="72"
                    FontAttributes="Bold"
+                   <!--TODO: This is gonna fall over as there is a typo-->
                    Horiz0gontalOptions="Center"
                    HorizontalTextAlignment="Center"/>
 
