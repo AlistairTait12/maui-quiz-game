@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using QuizGame.ViewModel;
+﻿using QuizGame.ViewModel;
 
 namespace QuizGame.View;
 
@@ -11,4 +10,3 @@ public partial class MainPage : ContentPage
         BindingContext = viewModel;
     }
 }
-
