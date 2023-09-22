@@ -20,7 +20,8 @@
                     BorderColor="Purple"
                     BorderWidth="2"
                     HeightRequest="40"
-                    CornerRadius="20"/>
+                    CornerRadius="20"
+                    Command="{Binding GoToFirstQuestionCommand}"/>
 
             <Button Text="About"
                     HorizontalOptions="Center"

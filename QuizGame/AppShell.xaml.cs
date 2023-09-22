@@ -4,10 +4,11 @@ namespace QuizGame;
 
 public partial class AppShell : Shell
 {
-	public AppShell()
-	{
-		InitializeComponent();
-		// TODO: Register routes here
-		Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
-	}
+    public AppShell()
+    {
+        InitializeComponent();
+        // TODO: Register routes here
+        Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
+        Routing.RegisterRoute(nameof(QuestionView), typeof(QuestionView));
+    }
 }

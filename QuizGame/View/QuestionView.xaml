@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizGame.View.QuestionView"
+             Title="QuestionView"
+             xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
+             x:DataType="viewmodel:QuestionViewModel">
+    <VerticalStackLayout>
+        <!--TODO Get the question text in here-->
+        <!--TODO Get several multiple choice answers in here-->
+        <Label Text="{Binding CurrentQuestion.QuestionText}"/>
+        <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame>
+                        <Label Text="{Binding .}"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
