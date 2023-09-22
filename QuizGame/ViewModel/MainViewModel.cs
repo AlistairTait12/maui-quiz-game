@@ -3,10 +3,16 @@ using QuizGame.View;
 
 namespace QuizGame.ViewModel;
 
-public partial class MainViewModel
+public partial class MainViewModel : BaseViewModel
 {
     public MainViewModel()
     {
+    }
+
+    [RelayCommand]
+    public async Task GoToFirstQuestionAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(QuestionView));
     }
 
     [RelayCommand]
