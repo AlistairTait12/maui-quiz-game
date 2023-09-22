@@ -14,9 +14,17 @@
                 <DataTemplate>
                     <Frame>
                         <Label Text="{Binding .}"/>
+                        <Frame.GestureRecognizers>
+                            <!--Need to bind relatively so it can detect the command from viewmodel-->
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:QuestionViewModel}},
+                                Path=SubmitAnswerCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="Yo"
+                Command="{Binding SayHiCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
