@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using QuizGame.Model;
 using QuizGame.Service;
+using QuizGame.View;
 
 namespace QuizGame.ViewModel;
 
@@ -16,7 +17,7 @@ public partial class QuestionViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public void SubmitAnswer()
+    public async Task SubmitAnswer()
     {
         // TODO Will likely need to refactor this to adhere to SRP
 
@@ -25,10 +26,15 @@ public partial class QuestionViewModel : BaseViewModel
         // TODO Update result
 
         // TODO Check if there are any more questions left in the list
-
-        // TODO Make this actually move on somehow
-        var currentIndex = Questions.ToList().IndexOf(currentQuestion);
-        CurrentQuestion = Questions.ElementAt(currentIndex + 1);
+        if (currentQuestion == Questions.Last())
+        {
+            await Shell.Current.GoToAsync(nameof(ResultsPage));
+        }
+        else
+        {
+            var currentIndex = Questions.ToList().IndexOf(currentQuestion);
+            CurrentQuestion = Questions.ElementAt(currentIndex + 1);
+        }
     }
 
     [ObservableProperty]
