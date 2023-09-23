@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizGame.View.ResultsPage"
+             Title="ResultsPage"
+             xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
+             x:DataType="viewmodel:ResultsViewModel">
+    <VerticalStackLayout>
+        <Label 
+            Text="You reached the end of the quiz!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <!--TODO Button here to get back to home page-->
+        <Button
+            Text="Home"
+            Command="{Binding GoHomeCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

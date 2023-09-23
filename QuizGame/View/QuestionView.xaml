@@ -6,14 +6,18 @@
              xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
              x:DataType="viewmodel:QuestionViewModel">
     <VerticalStackLayout>
-        <!--TODO Get the question text in here-->
-        <!--TODO Get several multiple choice answers in here-->
         <Label Text="{Binding CurrentQuestion.QuestionText}"/>
         <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame>
                         <Label Text="{Binding .}"/>
+                        <Frame.GestureRecognizers>
+                            <!--Need to bind relatively so it can detect the command from viewmodel-->
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:QuestionViewModel}},
+                                Path=SubmitAnswerCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

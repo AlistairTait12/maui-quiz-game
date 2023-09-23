@@ -10,5 +10,7 @@ public partial class AppShell : Shell
         // TODO: Register routes here
         Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         Routing.RegisterRoute(nameof(QuestionView), typeof(QuestionView));
+        Routing.RegisterRoute(nameof(ResultsPage), typeof(ResultsPage));
+        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
     }
 }
