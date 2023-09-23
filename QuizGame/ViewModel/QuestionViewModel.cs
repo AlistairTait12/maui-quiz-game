@@ -18,14 +18,17 @@ public partial class QuestionViewModel : BaseViewModel
     [RelayCommand]
     public void SubmitAnswer()
     {
-        // TODO Make this actually move on somehow
-        CurrentQuestion = Questions.ElementAt(1);
-    }
+        // TODO Will likely need to refactor this to adhere to SRP
 
-    [RelayCommand]
-    public void SayHi()
-    {
-        Shell.Current.DisplayAlert("Yo", "Yo there, you discovered the button", "Thanks");
+        // TODO Check answer
+
+        // TODO Update result
+
+        // TODO Check if there are any more questions left in the list
+
+        // TODO Make this actually move on somehow
+        var currentIndex = Questions.ToList().IndexOf(currentQuestion);
+        CurrentQuestion = Questions.ElementAt(currentIndex + 1);
     }
 
     [ObservableProperty]

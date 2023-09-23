@@ -6,8 +6,6 @@
              xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
              x:DataType="viewmodel:QuestionViewModel">
     <VerticalStackLayout>
-        <!--TODO Get the question text in here-->
-        <!--TODO Get several multiple choice answers in here-->
         <Label Text="{Binding CurrentQuestion.QuestionText}"/>
         <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}">
             <CollectionView.ItemTemplate>
@@ -24,7 +22,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Yo"
-                Command="{Binding SayHiCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
