@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using QuizGame.Extensions;
 
 namespace QuizGame.Model;
 
@@ -17,8 +17,6 @@ public class Question
 
         answers.AddRange(IncorrectAnswers);
 
-        // TODO Shuffle the answers at this point
-
-        return answers;
+        return answers.Shuffle();
     }
 }
