@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace QuizGame.Model;
+﻿namespace QuizGame.Model;
 
 public class Question
 {
@@ -17,7 +15,20 @@ public class Question
 
         answers.AddRange(IncorrectAnswers);
 
-        // TODO Shuffle the answers at this point
+        return ShuffleAnswers(answers);
+    }
+
+    private IEnumerable<string> ShuffleAnswers(IEnumerable<string> unShuffledAnswers)
+    {
+        var answers = unShuffledAnswers.ToArray();
+        var rand = new Random();
+        for (int i = answers.Length - 1; i > 0; i--)
+        {
+            var k = rand.Next(i + 1);
+            var val = answers[k];
+            answers[k] = answers[i];
+            answers[i] = val;
+        }
 
         return answers;
     }
