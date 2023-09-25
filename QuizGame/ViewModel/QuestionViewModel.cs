@@ -13,30 +13,42 @@ public partial class QuestionViewModel : BaseViewModel
     public QuestionViewModel(IQuestionService questionService)
     {
         Questions = questionService.GetQuestions();
-        currentQuestion = Questions.FirstOrDefault();
+        CurrentQuestion = Questions.FirstOrDefault();
+        UpdateScoreMessage();
     }
 
+    [ObservableProperty]
+    Question currentQuestion;
+
+    [ObservableProperty]
+    int score;
+
+    [ObservableProperty]
+    string scoreMessage;
+
     [RelayCommand]
-    public async Task SubmitAnswer()
+    public async Task SubmitAnswer(string submittedAnswer)
     {
-        // TODO Will likely need to refactor this to adhere to SRP
+        if (Equals(CurrentQuestion.CorrectAnswer, submittedAnswer))
+        {
+            Score++;
+        }
 
-        // TODO Check answer
+        UpdateScoreMessage();
 
-        // TODO Update result
-
-        // TODO Check if there are any more questions left in the list
-        if (currentQuestion == Questions.Last())
+        if (CurrentQuestion == Questions.Last())
         {
             await Shell.Current.GoToAsync(nameof(ResultsPage));
         }
         else
         {
-            var currentIndex = Questions.ToList().IndexOf(currentQuestion);
+            var currentIndex = Questions.ToList().IndexOf(CurrentQuestion);
             CurrentQuestion = Questions.ElementAt(currentIndex + 1);
         }
     }
 
-    [ObservableProperty]
-    Question currentQuestion;
+    private void UpdateScoreMessage()
+    {
+        ScoreMessage = $"{Score} out of {Questions.ToList().Count}";
+    }
 }

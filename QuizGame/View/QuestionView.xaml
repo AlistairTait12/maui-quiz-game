@@ -16,11 +16,13 @@
                             <!--Need to bind relatively so it can detect the command from viewmodel-->
                             <TapGestureRecognizer
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:QuestionViewModel}},
-                                Path=SubmitAnswerCommand}"/>
+                                Path=SubmitAnswerCommand}"
+                                CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Label Text="{Binding ScoreMessage}"/>
     </VerticalStackLayout>
 </ContentPage>
