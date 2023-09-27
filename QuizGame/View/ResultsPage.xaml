@@ -10,7 +10,9 @@
             Text="You reached the end of the quiz!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <!--TODO Button here to get back to home page-->
+        <Label
+            Text="{Binding Result.Message}"
+            HorizontalOptions="Center"/>
         <Button
             Text="Home"
             Command="{Binding GoHomeCommand}"/>

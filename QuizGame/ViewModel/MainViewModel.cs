@@ -12,7 +12,7 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     public async Task GoToFirstQuestionAsync()
     {
-        await Shell.Current.GoToAsync(nameof(QuestionView));
+        await Shell.Current.GoToAsync(nameof(QuestionPage));
     }
 
     [RelayCommand]
