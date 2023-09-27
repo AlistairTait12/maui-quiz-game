@@ -8,20 +8,18 @@ namespace QuizGame.ViewModel;
 
 public partial class QuestionViewModel : BaseViewModel
 {
-    public IEnumerable<Question> Questions { get; set; }
+    private IEnumerable<Question> _questions;
+    private int _score;
 
     public QuestionViewModel(IQuestionService questionService)
     {
-        Questions = questionService.GetQuestions();
-        CurrentQuestion = Questions.FirstOrDefault();
+        _questions = questionService.GetQuestions();
+        CurrentQuestion = _questions.FirstOrDefault();
         UpdateScoreMessage();
     }
 
     [ObservableProperty]
     Question currentQuestion;
-
-    [ObservableProperty]
-    int score;
 
     [ObservableProperty]
     string scoreMessage;
@@ -31,24 +29,39 @@ public partial class QuestionViewModel : BaseViewModel
     {
         if (Equals(CurrentQuestion.CorrectAnswer, submittedAnswer))
         {
-            Score++;
+            _score++;
         }
 
         UpdateScoreMessage();
 
-        if (CurrentQuestion == Questions.Last())
+        if (CurrentQuestion == _questions.Last())
         {
-            await Shell.Current.GoToAsync(nameof(ResultsPage));
+            await ProceedToResultsPage();
         }
         else
         {
-            var currentIndex = Questions.ToList().IndexOf(CurrentQuestion);
-            CurrentQuestion = Questions.ElementAt(currentIndex + 1);
+            var currentIndex = _questions.ToList().IndexOf(CurrentQuestion);
+            CurrentQuestion = _questions.ElementAt(currentIndex + 1);
         }
+    }
+
+    private async Task ProceedToResultsPage()
+    {
+        var result = new ResultsModel()
+        {
+            UserScore = _score,
+            TotalQuestions = _questions.Count()
+        };
+
+        await Shell.Current.GoToAsync(nameof(ResultsPage),
+            new Dictionary<string, object>
+            {
+                    { "ResultsModel", result }
+            });
     }
 
     private void UpdateScoreMessage()
     {
-        ScoreMessage = $"{Score} out of {Questions.ToList().Count}";
+        ScoreMessage = $"{_score} out of {_questions.Count()}";
     }
 }

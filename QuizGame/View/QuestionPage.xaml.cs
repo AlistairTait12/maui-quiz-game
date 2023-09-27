@@ -2,9 +2,9 @@ using QuizGame.ViewModel;
 
 namespace QuizGame.View;
 
-public partial class QuestionView : ContentPage
+public partial class QuestionPage : ContentPage
 {
-    public QuestionView(QuestionViewModel viewModel)
+    public QuestionPage(QuestionViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
