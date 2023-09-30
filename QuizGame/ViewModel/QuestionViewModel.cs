@@ -62,6 +62,6 @@ public partial class QuestionViewModel : BaseViewModel
 
     private void UpdateScoreMessage()
     {
-        ScoreMessage = $"{_score} out of {_questions.Count()}";
+        ScoreMessage = $"Score: {_score} / {_questions.Count()}";
     }
 }
