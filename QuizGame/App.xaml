@@ -9,6 +9,39 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="Primary">#B30DB7</Color>
+            <Color x:Key="AnswerLabelColor">#D9D9D9</Color>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderWidth" Value="5"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="CornerRadius" Value="35"/>
+                <Setter Property="Padding" Value="50,0,50,0"/>
+            </Style>
+
+            <Style x:Key="answerFrame" TargetType="Frame">
+                <Setter Property="Margin" Value="15,5,15,5"/>
+                <Setter Property="HeightRequest" Value="72"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource AnswerLabelColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource AnswerLabelColor}"/>
+            </Style>
+
+            <Style x:Key="answerLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="questionText" TargetType="Label">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="15"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

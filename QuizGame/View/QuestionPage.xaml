@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QuizGame.View.QuestionPage"
-             Title="QuestionView"
              xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
-             x:DataType="viewmodel:QuestionViewModel">
-    <VerticalStackLayout>
-        <Label Text="{Binding CurrentQuestion.QuestionText}"/>
-        <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}">
+             x:Class="QuizGame.View.QuestionPage"
+             x:DataType="viewmodel:QuestionViewModel"
+             Title="QuestionView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding CurrentQuestion.QuestionText}"
+               Style="{StaticResource questionText}"
+               Grid.Row="0"/>
+
+        <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}"
+                        Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame>
-                        <Label Text="{Binding .}"/>
+                    <Frame Style="{StaticResource answerFrame}">
+                        <Label Text="{Binding .}"
+                               Style="{StaticResource answerLabel}"/>
                         <Frame.GestureRecognizers>
                             <!--Need to bind relatively so it can detect the command from viewmodel-->
                             <TapGestureRecognizer
@@ -23,6 +33,9 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Label Text="{Binding ScoreMessage}"/>
-    </VerticalStackLayout>
+        <Label Text="{Binding ScoreMessage}"
+               Style="{StaticResource questionText}"
+               VerticalOptions="End"
+               Grid.Row="2"/>
+    </Grid>
 </ContentPage>

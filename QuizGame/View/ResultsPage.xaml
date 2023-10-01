@@ -5,16 +5,38 @@
              Title="ResultsPage"
              xmlns:viewmodel="clr-namespace:QuizGame.ViewModel"
              x:DataType="viewmodel:ResultsViewModel">
-    <VerticalStackLayout>
-        <Label 
-            Text="You reached the end of the quiz!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Label
-            Text="{Binding Result.Message}"
-            HorizontalOptions="Center"/>
+            Text="You scored:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontAttributes="Bold"
+            FontSize="40"
+            Grid.Row="0"/>
+        <Border
+            HeightRequest="350"
+            WidthRequest="350"
+            StrokeShape="RoundRectangle 175"
+            StrokeThickness="10"
+            Stroke="Black"
+            Grid.Row="1">
+            <Label
+                Text="{Binding Result.Message}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="40"
+                FontAttributes="Bold"/>
+        </Border>
         <Button
             Text="Home"
-            Command="{Binding GoHomeCommand}"/>
-    </VerticalStackLayout>
+            HorizontalOptions="Center"
+            Command="{Binding GoHomeCommand}"
+            Style="{StaticResource buttonStyle}"
+            Grid.Row="2"/>
+    </Grid>
 </ContentPage>
