@@ -20,7 +20,6 @@ public static class MauiProgram
         builder.Services.AddTransient<IQuestionService, FakeQuestionService>();
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<AboutPage>();
         builder.Services.AddTransient<QuestionPage>();
         builder.Services.AddTransient<ResultsPage>();
 

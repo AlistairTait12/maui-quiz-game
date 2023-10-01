@@ -18,23 +18,12 @@
                    HorizontalTextAlignment="Center"
                    Grid.Row="0"/>
 
-            <!--TODO: Get some styling on this buttton-->
             <Button Text="Start"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     Command="{Binding GoToFirstQuestionCommand}"
                     Grid.Row="1"
                     Style="{StaticResource buttonStyle}"/>
-
-            <!--TODO Uncomment this once you can apply the same styling in more than one place-->
-             <!--<Button Text="About"
-                    HorizontalOptions="Center"
-                    TextColor="Purple"
-                    BorderColor="Purple"
-                    BorderWidth="2"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    Command="{Binding GoToAboutPageCommand}"/>-->
         </Grid>
     </ScrollView>
 

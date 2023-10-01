@@ -14,10 +14,4 @@ public partial class MainViewModel : BaseViewModel
     {
         await Shell.Current.GoToAsync(nameof(QuestionPage));
     }
-
-    [RelayCommand]
-    public async Task GoToAboutPageAsync()
-    {
-        await Shell.Current.GoToAsync(nameof(AboutPage));
-    }
 }
