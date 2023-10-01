@@ -10,5 +10,5 @@ public class ResultsModel
 
     public int TotalQuestions { get; set; }
 
-    public string Message => $"Final score: {UserScore} out of {TotalQuestions}";
+    public string Message => $"{UserScore} of {TotalQuestions}";
 }
