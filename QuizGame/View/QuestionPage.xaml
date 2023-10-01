@@ -5,11 +5,18 @@
              x:Class="QuizGame.View.QuestionPage"
              x:DataType="viewmodel:QuestionViewModel"
              Title="QuestionView">
-    <VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Label Text="{Binding CurrentQuestion.QuestionText}"
-               Style="{StaticResource questionText}"/>
+               Style="{StaticResource questionText}"
+               Grid.Row="0"/>
 
-        <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}">
+        <CollectionView ItemsSource="{Binding CurrentQuestion.AllAnswers}"
+                        Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Style="{StaticResource answerFrame}">
@@ -26,8 +33,9 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <!--TODO Somehow get this near bottom of the page, may need to use grid-->
         <Label Text="{Binding ScoreMessage}"
-               Style="{StaticResource questionText}"/>
-    </VerticalStackLayout>
+               Style="{StaticResource questionText}"
+               VerticalOptions="End"
+               Grid.Row="2"/>
+    </Grid>
 </ContentPage>
